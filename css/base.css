@@ -1,0 +1,28 @@
+/* 通用公共样式 */
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix::after {
+  content: " ";
+  display: block;
+  width: 0%;
+  height: 0%;
+  clear: both;
+}
+
+.text-hidden {
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+.text-ellipsis{
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

@@ -1,0 +1,365 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* ------------------------------------------- */
+/* 地图容器  */
+.map-container {
+  width: 100%;
+  height: 100%;
+  background-color: bisque;
+}
+
+/* 视图缩放工具 */
+.ol-zoom {
+  top: 0.5em;
+  right: 0.5em;
+  bottom: auto;
+  left: auto;
+}
+
+/* ------------------------------------------- */
+/* 检索面板 */
+.search-container {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  z-index: 20;
+}
+
+.search-box {
+  position: relative;
+  width: 400px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  padding: 5px 10px 5px 10px;
+}
+
+.search-text {
+  width: 100%;
+  height: 100%;
+  /* padding: 0px 40px 0px 5px; */
+  padding: 0px 5px 0px 5px;
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.search-btn {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 24px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: transparent;
+}
+
+.search-result {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-top: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.search-result-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.search-result-item {
+  padding: 8px 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.search-result-item--noresult {
+  cursor: default;
+  color: #8e8e8e;
+  text-align: center;
+}
+
+.search-result-color {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+  vertical-align: middle;
+  border-radius: 2px;
+  background-color: transparent;
+}
+
+/* ------------------------------------------- */
+/* 能源筛选面板 */
+.fuel-container {
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+  width: 200px;
+  min-height: 300px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  font-size: 14px;
+  z-index: 10;
+}
+
+.fuel-item {
+  margin-bottom: 5px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.fuel-item:last-child {
+  margin-bottom: 0;
+}
+
+.fuel-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.fuel-color {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+  vertical-align: middle;
+  border-radius: 2px;
+  background-color: red;
+}
+
+.fuel-item--disabled {
+  text-decoration: line-through;
+}
+
+.fuel-item--disabled .fuel-color {
+  background-color: gray !important;
+}
+
+.fuel-item--disabled .fuel-name {
+  color: gray !important;
+}
+
+/* ------------------------------------------- */
+/* 提示框通用样式 */
+.ol-popup {
+  position: absolute;
+  background-color: white;
+  -webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #cccccc;
+  bottom: 12px;
+  left: -50px;
+  min-width: 280px;
+}
+
+.ol-popup:after,
+.ol-popup:before {
+  top: 100%;
+  border: solid transparent;
+  content: ' ';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.ol-popup:after {
+  border-top-color: rgba(255, 255, 255, 0.9);
+  border-width: 10px;
+  left: 48px;
+  margin-left: -10px;
+}
+
+.ol-popup:before {
+  border-top-color: #cccccc;
+  border-width: 11px;
+  left: 48px;
+  margin-left: -11px;
+}
+
+/* ------------------------------------------- */
+/* 发电厂信息提示框 */
+.plant-info-overlay {
+  /* display: none; */
+  /* position: absolute; */
+  /* min-width: 200px; */
+  /* max-width: 500px; */
+  width: 200px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  font-size: 14px;
+  color: #333;
+  z-index: 5;
+}
+
+.plant-info-field {
+  margin-bottom: 15px;
+}
+
+.plant-info-field:last-child {
+  margin-bottom: 0;
+}
+
+.plant-info-name {
+  font-weight: bold;
+  /* font-size: 16px; */
+  margin-bottom: 8px;
+}
+
+.plant-info-val {
+  /* margin-left: 5px; */
+  color: #555;
+}
+
+/* ------------------------------------------- */
+/* 国家信息面板 */
+.country-container {
+  display: none;
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  width: 400px;
+  min-height: 100px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  font-size: 14px;
+  z-index: 10;
+}
+
+.country-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.country-fuel-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.country-fuel-table thead {
+  background-color: #f0f0f0;
+}
+
+.country-fuel-table th,
+.country-fuel-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.country-fuel-color {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+  margin-bottom: 2px;
+  vertical-align: middle;
+  border-radius: 2px;
+  background-color: red;
+}
+
+.country-container-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  width: 20px;
+  height: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #888;
+  cursor: pointer;
+  text-align: center;
+}
+
+.country-container-close:hover {
+  color: #333;
+}
+
+/* 地图切换工具 */
+.map-control {
+  top: 65px;
+  right: 0.5em;
+}
+
+.map-layers-container {
+  display: none;
+  position: absolute;
+  top: 3px;
+  right: 31px;
+  width: 120px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  font-size: 14px;
+  z-index: 10;
+}
+
+.map-control:hover .map-layers-container {
+  display: block;
+}
+
+.map-layers {
+  border-bottom: 1px solid #ccc;
+}
+
+.map-layers:last-child {
+  border-bottom: none;
+}
+
+.map-layer {
+  margin-bottom: 8px;
+}
+
+.map-layers:last-child .map-layer {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.map-layer-name input {
+  vertical-align: middle;
+  margin-bottom: 3px;
+}
