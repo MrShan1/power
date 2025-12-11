@@ -68,7 +68,7 @@ function createBaseMapLayer(layerType) {
 // 获取天地图相关的地图url
 function getMapUrl(type) {
   const tk = '8a896a74ef4379f9f9d5a86dd308ba18';
-  const url = `http://t0.tianditu.com/DataServer?T=${type}&x={x}&y={y}&l={z}&tk=${tk}`; // 天地图 - 本地
+  const url = `https://t0.tianditu.com/DataServer?T=${type}&x={x}&y={y}&l={z}&tk=${tk}`; // 天地图 - 本地
   // const url = `/tianditu/DataServer?T=${type}&x={x}&y={y}&l={z}&tk=${tk}`; // 天地图 - 线上代理
   return url;
 }
